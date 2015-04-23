@@ -29,10 +29,9 @@ with con:
 		person_name = person[1] + ' ' + person[2]
 		person_age = person[3]
 
-
 		print  "%s, %s years old. " % (person_name, person_age)
 
-		pets = cur.execute("SELECT * FROM Person_pet WHERE person_id=%s"  % (user_id) )
+		pets = cur.execute("SELECT * FROM Person_pet WHERE person_id=%s"  % (user_id))
 		person_pets = cur.fetchall()
 		pets_counter = len(person_pets)
 
@@ -41,7 +40,7 @@ with con:
 			person_pet = person_pets[pets_counter]
 
 			pet_id = person_pet[1]
-			cur.execute("SELECT * FROM Pet WHERE id=%s"  % (pet_id) )
+			cur.execute("SELECT * FROM Pet WHERE id=%s"  % (pet_id))
 			pet = cur.fetchone()
 
 			pet_name = pet[1]
@@ -49,7 +48,7 @@ with con:
 			pet_age = pet[3]
 			pet_alive = pet[4]
 
-			if pet[4] == 1:
+			if pet_alive:
 				print  "%s owns %s %s, that is %s years old." % (person_name, pet_name, pet_breed, pet_age)
 			else:
 				print  "%s owned %s %s, that was %s years old." % (person_name, pet_name, pet_breed, pet_age)
