@@ -9,14 +9,13 @@ with con:
 
 	while True:
 		user_id = raw_input("Enter user ID or -1 to exit")
-		print user_id
 
 		if user_id.isdigit()==False:
 			if (user_id == '-1'):
 				print 'EXIT'
 				sys.exit()
 
-			print "Please enter a number."
+			print "Not valid input. Please enter number."
 			continue
 
 		cur.execute("SELECT * FROM Person WHERE id=%s"  % (user_id) )
